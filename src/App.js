@@ -2,7 +2,7 @@ import './App.css';
 
 import React, { useEffect, useState } from 'react';
 
-const API_ENDPOINT = 'http://localhost:3000/users';
+const API_ENDPOINT = 'https://herocker-backend-2244.herokuapp.com/users';
 
 function App() {
   const [data, setData] = useState([]);
@@ -11,7 +11,8 @@ function App() {
   useEffect(() => {
     fetch(API_ENDPOINT)
       .then((res) => res.json())
-      .then((parsedData) => { setData(parsedData); setLoading(false); });
+      .then((parsedData) => { setData(parsedData); setLoading(false); })
+      .catch((e) => console.log(e));
   }, []);
 
   if (loading) return <h1>loading</h1>;
